@@ -1,2 +1,3 @@
 # weather-app
-Weather App that provides weather information for user location.
+
+Weather App that provides weather related information based on user location.
