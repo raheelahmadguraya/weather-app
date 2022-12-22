@@ -4,9 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:," />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    Test 1, 2
+    <div class="appContainer">
+      <div id="autocomplete" class="autocomplete-container"></div>
+      <div class="locationDisplay"></div>
+      <div class="temp">
+        <div class="currentTemp"></div>
+        <button id="metric" class="tempUnit selected">
+          <p>&degC</p>
+        </button>
+        <p>/</p>
+        <button id="imperial" class="tempUnit">
+          <p>&degF</p>
+        </button>
+      </div>
+      <div class="weatherData"></div>
+    </div>
+    <div class="ring">
+      Loading
+      <span></span>
+    </div>
   </body>
 </html>
