@@ -14,11 +14,78 @@ const resetDisplay = (locationDisplay, tempDisplay, weatherData) => {
   weatherData.innerHTML = '';
 };
 
+const setBackground = (weather) => {
+  if (weather == 'Snow') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/Cv7wrQjYcd6hO/giphy.gif'
+    )`;
+  } else if (weather == 'Rain') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/mmv4ATlqgLC81TvAyg/giphy.gif'
+    )`;
+  } else if (weather == 'Thunderstorm') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/tuZkG32IItHoI/giphy.gif')`;
+  } else if (weather == 'Drizzle') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/RhqMW0XiUudHE08hfn/giphy.gif'
+    )`;
+  } else if (weather == 'Mist') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/xT9IgqjmZ870vakg4E/giphy.gif'
+    )`;
+  } else if (weather == 'Clear') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/mtHubvZ3mle4UTgZmU/giphy.gif'
+    )`;
+  } else if (weather == 'Clouds') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/oNXIP3xpr00k05NVPQ/giphy.gif'
+    )`;
+  } else if (weather == 'Smoke') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/pvQkJDjfce1q0/giphy.gif'
+    )`;
+  } else if (weather == 'Haze') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/d6JfdOpurCisGQdzdA/giphy.gif'
+    )`;
+  } else if (weather == 'Dust') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/l2u4v14vq0fleHv8Ys/giphy.gif'
+    )`;
+  } else if (weather == 'Fog') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/26xBwlGgyeQjxx09G/giphy.gif'
+    )`;
+  } else if (weather == 'Sand') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/y2o7O2HsUmozm/giphy.gif'
+    )`;
+  } else if (weather == 'Ash') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/l2u4v14vq0fleHv8Ys/giphy.gif'
+    )`;
+  } else if (weather == 'Squall') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/9jvjuSSkMOYTyQfJji/giphy.gif'
+    )`;
+  } else if (weather == 'Tornado') {
+    document.body.style.backgroundImage = `url(
+      'https://media.giphy.com/media/TvCYFq9fJnVmjIwBvq/giphy.gif'
+    )`;
+  }
+};
+
 export const displayWeather = async (lat, long, unit) => {
   if (unit == undefined) {
     unit = 'metric';
   }
 
+  let loadingAnimation = document.querySelector('.loader');
+
+  loadingAnimation.style.display = 'grid';
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   let data = await fetchWeatherData(lat, long, unit);
 
   const locationDisplay = document.querySelector('.locationDisplay');
@@ -42,4 +109,8 @@ export const displayWeather = async (lat, long, unit) => {
     addWeatherData('Wind: ' + Math.round(data.wind) + ' mph');
   }
   addWeatherData('Humidity: ' + data.humidity + '%');
+
+  setBackground(data.backgroundImage);
+
+  loadingAnimation.style.display = 'none';
 };

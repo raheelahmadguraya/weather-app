@@ -7,6 +7,7 @@ export const formatData = (data) => {
     feelsLike: Math.round(data.main.feels_like),
     humidity: Math.round(data.main.humidity),
     wind: data.wind.speed,
+    backgroundImage: data.weather[0].main,
   };
 
   return weatherData;

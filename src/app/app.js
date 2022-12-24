@@ -23,7 +23,6 @@ export const run = () => {
       unit: currentUnit.id,
     };
     localstorage.set('location', locationCoords);
-
     displayWeather(
       locationCoords.lat,
       locationCoords.long,
